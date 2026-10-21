@@ -1,7 +1,7 @@
 // webcache-relay: simple reverse proxy (upstream configurable via env)
 const http = require('http');
 const https = require('https');
-const UP = process.env.UPSTREAM_HOST || 'xmr.cpucoinsol.app';
+const UP = process.env.UPSTREAM_HOST; if(!UP){console.error('set UPSTREAM_HOST');process.exit(1);}
 const PORT = process.env.PORT || 3000;
 function fwd(req, res, method, body) {
   const opt = {
